@@ -7,11 +7,13 @@ Backend - Firebase [guide](https://www.freecodecamp.org/news/building-a-real-tim
 Frontend - React
 
 
-## PREREQUISUITES\
-[NodeJS](https://nodejs.org/en)
+## PREREQUISUITES
+NodeJS - [download](https://nodejs.org/en)
 
+## DEPLOY
+Clone repo\
 
-## FIREBASE LOCAL SET UP - [guide](https://firebase.google.com/docs/emulator-suite)\
+## FIREBASE LOCAL SET UP - [guide](https://firebase.google.com/docs/emulator-suite)
 Run `npm install firebase`\
 I had to use `npm install -g firebase-tools -f` to rectify `'firebase' is not recognized as an internal or external command'` error\
 Navigate to your JavaScript Project and run `firebase init`\
