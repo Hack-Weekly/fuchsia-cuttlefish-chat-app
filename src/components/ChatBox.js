@@ -41,7 +41,7 @@ const ChatBox = () => {
         ))}
       </div>
       <span ref={scroll}></span>
-      <SendMessage />
+      <SendMessage scroll={scroll}/>
     </main>
   );
 };
