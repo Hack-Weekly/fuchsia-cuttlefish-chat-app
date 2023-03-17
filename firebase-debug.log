@@ -1,0 +1,108 @@
+[debug] [2023-03-17T03:28:53.162Z] ----------------------------------------------------------------------
+[debug] [2023-03-17T03:28:53.163Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\dingo\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2023-03-17T03:28:53.164Z] CLI Version:   11.24.1
+[debug] [2023-03-17T03:28:53.164Z] Platform:      win32
+[debug] [2023-03-17T03:28:53.164Z] Node Version:  v18.15.0
+[debug] [2023-03-17T03:28:53.165Z] Time:          Thu Mar 16 2023 23:28:53 GMT-0400 (Eastern Daylight Time)
+[debug] [2023-03-17T03:28:53.165Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-03-17T03:28:53.240Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-17T03:28:53.240Z] > authorizing via signed-in user (thebeatlesphan@gmail.com)
+[debug] [2023-03-17T03:28:53.405Z] java version "17.0.1" 2021-10-19 LTS
+
+[debug] [2023-03-17T03:28:53.406Z] Java(TM) SE Runtime Environment (build 17.0.1+12-LTS-39)
+Java HotSpot(TM) 64-Bit Server VM (build 17.0.1+12-LTS-39, mixed mode, sharing)
+
+[debug] [2023-03-17T03:28:53.432Z] Parsed Java major version: 17
+[info] i  emulators: Starting emulators: auth, functions, firestore {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth, functions, firestore"}}
+[debug] [2023-03-17T03:28:53.441Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-17T03:28:53.441Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-17T03:28:53.441Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-17T03:28:53.441Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-17T03:28:53.441Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2023-03-17T03:28:53.448Z] [hub] writing locator at C:\Users\dingo\AppData\Local\Temp\hub-fuchsia-cuttlefish-chat-b77e2.json
+[debug] [2023-03-17T03:28:53.453Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-17T03:28:53.453Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-17T03:28:53.453Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] !  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: database, hosting, pubsub, storage {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mdatabase, hosting, pubsub, storage\u001b[22m"}}
+[debug] [2023-03-17T03:28:53.457Z] defaultcredentials: writing to file C:\Users\dingo\AppData\Roaming\firebase\thebeatlesphan_gmail_com_application_default_credentials.json
+[debug] [2023-03-17T03:28:53.458Z] Setting GAC to C:\Users\dingo\AppData\Roaming\firebase\thebeatlesphan_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\dingo\\AppData\\Roaming\\firebase\\thebeatlesphan_gmail_com_application_default_credentials.json"}}
+[debug] [2023-03-17T03:28:53.459Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/fuchsia-cuttlefish-chat-b77e2/adminSdkConfig [none]
+[debug] [2023-03-17T03:28:53.751Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/fuchsia-cuttlefish-chat-b77e2/adminSdkConfig 200
+[debug] [2023-03-17T03:28:53.751Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/fuchsia-cuttlefish-chat-b77e2/adminSdkConfig {"projectId":"fuchsia-cuttlefish-chat-b77e2","databaseURL":"https://fuchsia-cuttlefish-chat-b77e2-default-rtdb.firebaseio.com","storageBucket":"fuchsia-cuttlefish-chat-b77e2.appspot.com","locationId":"us-east1"}
+[debug] [2023-03-17T03:28:53.766Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-03-17T03:28:53.766Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
+[debug] [2023-03-17T03:28:53.767Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","C:\\Users\\dingo\\.cache\\firebase\\emulators\\cloud-firestore-emulator-v1.16.0.jar","--host","127.0.0.1","--port",8080,"--websocket_port",9150,"--project_id","fuchsia-cuttlefish-chat-b77e2","--rules","C:\\Users\\dingo\\Desktop\\firebase\\fuchsia-cuttlefish-chat-app\\firestore.rules","--single_project_mode",true,"--functions_emulator","127.0.0.1:5001"],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\dingo\\\\.cache\\\\firebase\\\\emulators\\\\cloud-firestore-emulator-v1.16.0.jar\",\"--host\",\"127.0.0.1\",\"--port\",8080,\"--websocket_port\",9150,\"--project_id\",\"fuchsia-cuttlefish-chat-b77e2\",\"--rules\",\"C:\\\\Users\\\\dingo\\\\Desktop\\\\firebase\\\\fuchsia-cuttlefish-chat-app\\\\firestore.rules\",\"--single_project_mode\",true,\"--functions_emulator\",\"127.0.0.1:5001\"],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false}"}}
+[info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
+[info] +  firestore: Firestore Emulator UI websocket is running on 9150. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator UI websocket is running on 9150."}}
+[info] i  ui: downloading ui-v1.11.4.zip... {"metadata":{"emulator":{"name":"ui"},"message":"downloading ui-v1.11.4.zip..."}}
+[debug] [2023-03-17T03:28:58.478Z] >>> [apiv2][query] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.11.4.zip 
+[debug] [2023-03-17T03:28:58.543Z] <<< [apiv2][status] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.11.4.zip 200
+[debug] [2023-03-17T03:28:58.543Z] <<< [apiv2][body] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.11.4.zip [stream]
+[debug] [2023-03-17T03:29:00.788Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-03-17T03:29:00.788Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-03-17T03:29:00.789Z] Starting Emulator UI with command {"binary":"node","args":["C:\\Users\\dingo\\.cache\\firebase\\emulators\\ui-v1.11.4\\server\\server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"C:\\\\Users\\\\dingo\\\\.cache\\\\firebase\\\\emulators\\\\ui-v1.11.4\\\\server\\\\server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2023-03-17T03:29:00.863Z] Web / API server started at 127.0.0.1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
+[debug] [2023-03-17T03:29:00.863Z] Web / API server started at ::1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
+[info] i  functions: Watching "C:\Users\dingo\Desktop\firebase\fuchsia-cuttlefish-chat-app\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\Users\\dingo\\Desktop\\firebase\\fuchsia-cuttlefish-chat-app\\functions\" for Cloud Functions..."}}
+[debug] [2023-03-17T03:29:01.055Z] Validating nodejs source
+[debug] [2023-03-17T03:29:01.982Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^11.5.0",
+    "firebase-functions": "^4.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.0.0"
+  },
+  "private": true
+}
+[debug] [2023-03-17T03:29:01.982Z] Building nodejs source
+[debug] [2023-03-17T03:29:01.982Z] Failed to find version of module node: reached end of search path C:\Users\dingo\Desktop\firebase\fuchsia-cuttlefish-chat-app\functions\node_modules
+[warn] !  functions: Your requested "node" version "16" doesn't match your global version "18". Using node@18 from host. 
+[debug] [2023-03-17T03:29:01.984Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-03-17T03:29:01.990Z] Found firebase-functions binary at 'C:\Users\dingo\Desktop\firebase\fuchsia-cuttlefish-chat-app\functions\node_modules\.bin\firebase-functions'
+[debug] [2023-03-17T03:29:02.150Z] Serving at port 8794
+
+[debug] [2023-03-17T03:29:02.338Z] Got response from /__/functions.yaml {"endpoints":{},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-03-17T03:29:02.342Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: . {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: ."}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────────┬────────────────┬─────────────────────────────────┐
+│ Emulator       │ Host:Port      │ View in Emulator UI             │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Authentication │ 127.0.0.1:9099 │ http://127.0.0.1:4000/auth      │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Functions      │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Firestore      │ 127.0.0.1:8080 │ http://127.0.0.1:4000/firestore │
+└────────────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500, 9150
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
