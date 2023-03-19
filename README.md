@@ -9,10 +9,10 @@ Firebase - [guide](https://www.freecodecamp.org/news/building-a-real-time-chat-a
 React
 
 
-## PREREQUISUITES
+## PREREQUISITES
 NodeJS - [download](https://nodejs.org/en)\
 Firebase Project - [link](https://firebase.google.com/)\
-Firebase Emulator = [link](https://firebase.google.com/docs/emulator-suite)
+Firebase Emulator - [link](https://firebase.google.com/docs/emulator-suite)
 
 ## DEPLOY
 1. Clone repo
@@ -61,8 +61,8 @@ note - `const use_emulator` variable\
 5. `npm start` to start React project - if you've put in the firebase config in, it should work fine.
 
 ## FIREBASE LOCAL SET UP - [guide](https://firebase.google.com/docs/emulator-suite)
-1. Run `npm install -g firebase-tools -f`\
-2. Navigate to your JavaScript Project and run `firebase init`\
+1. Run `npm install -g firebase-tools -f`
+2. Navigate to your JavaScript Project and run `firebase init`
 - If you get `'Error: Failed to authenticate, have you run firebase login'`, run `firebase login` and log in
 - Select the modules you want to enable (I enabled Authenticator, Firestore, and Functions)
 - Select default ports when prompted
