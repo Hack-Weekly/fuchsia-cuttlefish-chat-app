@@ -5,6 +5,8 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 const SendMessage = ({ scroll }) => {
   const [message, setMessage] = useState("");
 
+  const clearInput = () => setMessage("");
+
   const sendMessage = async (event) => {
     event.preventDefault();
     if (message.trim() === "") {
@@ -12,6 +14,7 @@ const SendMessage = ({ scroll }) => {
       return;
     }
     const { uid, displayName, photoURL } = auth.currentUser;
+
     await addDoc(collection(db, "messages"), {
       text: message,
       name: displayName,
@@ -19,12 +22,18 @@ const SendMessage = ({ scroll }) => {
       createdAt: serverTimestamp(),
       uid,
     });
-    setMessage("");
+
     scroll.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <form onSubmit={(event) => sendMessage(event)} className="send-message">
+    <form
+      onSubmit={(event) => {
+        sendMessage(event);
+        clearInput();
+      }}
+      className="send-message"
+    >
       <label htmlFor="messageInput" hidden>
         Enter Message
       </label>
