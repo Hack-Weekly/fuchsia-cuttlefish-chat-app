@@ -11,6 +11,7 @@ const Message = ({ message }) => {
         className="chat-bubble__left"
         src={message.avatar}
         alt="user avatar"
+        referrerPolicy="no-referrer"
       />
       <div className="chat-bubble__right">
         <p className="user-name">{message.name}</p>
