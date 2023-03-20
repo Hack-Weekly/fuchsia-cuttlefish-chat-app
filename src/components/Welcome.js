@@ -24,7 +24,7 @@ const Welcome = () => {
         width={192}
         height={192}
       />
-      <p>Sign in with Google to chat with with the Cuttlefish</p>
+      <p>Sign in with Google to chat with the Cuttlefish</p>
       <button className="sign-in">
         <img
           onClick={googleSignIn}

@@ -5,8 +5,6 @@ import {
   orderBy,
   onSnapshot,
   limit,
-  QuerySnapshot,
-  Query,
 } from "firebase/firestore";
 import { db } from "../firebase";
 import Message from "./Message";

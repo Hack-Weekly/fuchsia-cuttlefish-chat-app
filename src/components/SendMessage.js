@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { auth, db } from "../firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
@@ -7,12 +7,15 @@ const SendMessage = ({ scroll }) => {
 
   const clearInput = () => setMessage("");
 
+  const messageInput = useRef(null);
+
+  useEffect(() => {
+    window.addEventListener("keydown", e => !(e.metaKey || e.ctrlKey) && messageInput.current?.focus());
+  }, []);
+
   const sendMessage = async (event) => {
     event.preventDefault();
-    if (message.trim() === "") {
-      alert("Enter valid message");
-      return;
-    }
+    if (message.trim() === "") return;
     const { uid, displayName, photoURL } = auth.currentUser;
 
     await addDoc(collection(db, "messages"), {
@@ -38,11 +41,14 @@ const SendMessage = ({ scroll }) => {
         Enter Message
       </label>
       <input
+        autoFocus
         id="messageInput"
         name="messageInput"
         type="text"
+        autoComplete="off"
         className="form-input__input"
-        placeholder="type message..."
+        placeholder="Type a message"
+        ref={messageInput}
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
