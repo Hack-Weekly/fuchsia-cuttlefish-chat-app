@@ -7,25 +7,6 @@ const roomsRef = collection(db, "rooms");
 
 const ChatContainer = () => {
     const [rooms, setRooms] = useState([]);
-    // const [room, setRoom] = useState('');
-
-    // useEffect(() => {
-    //     const q = query(
-    //         roomsRef,
-    //         orderBy("createdAt"),
-    //         limit(8)
-    //     );
-
-    //     const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
-    //         let rooms = [];
-    //         QuerySnapshot.forEach((doc) => {
-    //             rooms.push({ ...doc.data(), id: doc.id });
-    //         });
-    //         setRooms(rooms);
-    //     });
-    //     return () => unsubscribe;
-    // }, []);
-
 
     useEffect(() => {
         const q = query(
