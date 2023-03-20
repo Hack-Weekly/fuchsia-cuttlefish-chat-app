@@ -72,6 +72,9 @@ input {
   padding: 30px;
   margin-bottom: 60px;
 }
+.chat-bubble-wrapper {
+  margin-bottom: '15px';
+}
 .chat-bubble {
   border-radius: 20px 20px 20px 0;
   padding: 15px;
@@ -82,7 +85,7 @@ input {
   box-shadow: -2px 2px 1px 1px #620138;
   display: flex;
   align-items: flex-start;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .chat-bubble.right {
   margin-left: auto;
@@ -107,6 +110,9 @@ input {
 }
 .message-time {
   display: block;
+  font-size: 0.8rem;
+}
+.message-time.right {
   text-align: right;
 }
 
