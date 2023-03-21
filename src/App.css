@@ -11,6 +11,7 @@ body {
   max-width: 100vw;
   font-size: 16px;
   font-family: "Lato", sans-serif;
+  background-color: #e8e8e8;
 }
 
 /* h2 {
@@ -34,9 +35,15 @@ input {
   display: flex;
   align-items: center;
   background-color: #36454f;
-  color: #fafafa;
   height: 60px;
   box-shadow: 0 0 10px #04220e;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.nav-bar, .nav-bar a {
+  color: #fafafa;
+  text-decoration: none;
 }
 .sign-in {
   border: none;
@@ -107,6 +114,9 @@ input {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.chat-box {
+  margin-top: 60px;
+}
 .messages-wrapper {
   padding: 30px;
   margin-bottom: 60px;
@@ -137,6 +147,32 @@ input {
   height: 35px;
   border-radius: 50%;
   margin-right: 10px;
+}
+.chat-container {
+  padding: 16px;
+  margin-top: 76px;
+  display: flex;
+  flex-direction: column;
+}
+.chat-room-select {
+  display: flex;
+  flex-direction: column;
+}
+.chat-room-select a {
+  padding: 16px 32px;
+  margin: 8px 0;
+  background-color: #fafafa;
+  border-radius: 8px;
+  box-shadow: 0 0 8px -2px #000;
+  text-decoration: none;
+  color: #000;
+  text-transform: capitalize;
+  width: 50vw;
+}
+.chat-room-select a:hover {
+  background-color: #fff;
+  box-shadow: 0 0 16px -2px #7B0246;
+
 }
 .user-name {
   font-weight: bold;

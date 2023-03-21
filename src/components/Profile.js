@@ -32,6 +32,7 @@ const Profile = () => {
           src={photoURL}
           alt="User Image"
           onClick={() => setOpen(!open)}
+          referrerPolicy="no-referrer"
           style={{
             borderRadius: "100%",
             boxShadow: "0 0 5px -2px #000",
