@@ -1,8 +1,9 @@
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import React, { useEffect, useRef, useState } from "react";
 import { auth, db } from "../firebase";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
-const SendMessage = ({ scroll }) => {
+const SendMessage = ({ scroll, room }) => {
+
   const [message, setMessage] = useState("");
 
   const clearInput = () => setMessage("");
@@ -15,6 +16,7 @@ const SendMessage = ({ scroll }) => {
 
   const sendMessage = async (event) => {
     event.preventDefault();
+
     if (message.trim() === "") return;
     const { uid, displayName, photoURL } = auth.currentUser;
 
@@ -23,6 +25,7 @@ const SendMessage = ({ scroll }) => {
       name: displayName,
       avatar: photoURL,
       createdAt: serverTimestamp(),
+      room,
       uid,
     });
 
