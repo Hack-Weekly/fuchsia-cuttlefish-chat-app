@@ -80,7 +80,22 @@ note - `const use_emulator` variable\
 3. After the emulator has been initialized, run `firebase emulators:start` to start your emulator
 4. In your firebase.js file, change the use_emulator variable to `true` in order to connect your app to emulator
 
-### FIREBASE STORAGE SETUP
+
+### CHAT ROOM FIRESTORE SETUP
+
+1. Go to `Firestore Database` in the firebase dashboard.
+2. Click `Start collection` and name it `rooms`. This will have the fields:
+
+```
+  name: string
+  description: string
+  createdAt: timestamp
+```
+
+3. Once you have the new collection you should be able to add new chat rooms from the main page, and once you send messages in those new chat rooms you should see a new `room` field in the messages collection. (older messages won't show up anywhere)
+4. 
+
+## FIREBASE STORAGE SETUP
 
 1. In the sidebar go to `Storage` and click `Get started`.
 2. Select `start in production mode`.
