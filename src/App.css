@@ -153,3 +153,30 @@ input {
   background-color: #EA0385;
   font-weight: 600;
 }
+
+.splash{
+  cursor: pointer;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  height: 100%;
+  width: 100%;
+  transform: translate(-50%,-50%);
+  background-color: #EA0385;
+  transition: all ease-out 350ms;
+}
+.hidden{
+  transition : 0.75s;
+  display : none;
+}
+.splashy {
+  height : 90%;
+  display : flex;
+  justify-content: center;
+  align-items : center;
+}
+
+.splashy img {
+   box-shadow: 0px 10px 20px 5px rgba(0, 0, 0, 0.8);
+  transform: translateY(-1.5rem);
+}
