@@ -78,15 +78,29 @@ input {
   height: 30px;
   box-shadow: 0 0 10px #04220e;
 }
+.chat-rooms-container {
+  padding: 20px;
+}
+.chat-room-select {
+  border: 2px solid grey;
+  border-radius: 10px;
+  font-size: large;
+}
+.chat-room-select:hover {
+  background-color: rgb(250, 228, 250);
+}
+.chat-room-text,
+.chat-room-text:visited {
+  text-decoration: none;
+  color: black;
+}
 .chat-room-back:visited {
   color: #fafafa;
 }
 .chat-room-back {
   text-decoration: none;
-  /* flex: left; */
-  /* display: block; */
 }
-.chat-room-name {
+.chat-room-title {
   display: block;
   flex-grow: 1;
   text-align: center;

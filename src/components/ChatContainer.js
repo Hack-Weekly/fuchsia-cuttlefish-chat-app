@@ -2,7 +2,7 @@ import { collection, limit, onSnapshot, orderBy, query } from "firebase/firestor
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
 import ChatRoom from "./ChatRoom";
-
+import CreateChatRoom from "./CreateChatRoom";
 const roomsRef = collection(db, "rooms");
 
 const ChatContainer = () => {
@@ -25,10 +25,11 @@ const ChatContainer = () => {
     }, []);
 
     return (
-        <main className="chat-container">
-            <div>
+        <main className="chat-rooms-container">
+            <CreateChatRoom />
+            <div style={{ paddingTop: 15 }}>
                 {rooms?.map((room) => (
-                    <ChatRoom key={room.id} roomName={room.name} />
+                    <ChatRoom key={room.id} roomName={room.name} roomDescription={room.description} />
                 ))}
             </div>
         </main>
