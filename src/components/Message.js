@@ -32,7 +32,7 @@ const Message = ({ message }) => {
               </div>
             </div>
             <div>
-              <img src={message.imageURL} style={{ maxWidth: 400 }} />
+              <img src={message.imageURL} style={{ maxWidth: 400 }} alt='' />
             </div>
           </div>
         ) : (
