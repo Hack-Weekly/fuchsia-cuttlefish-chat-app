@@ -1,6 +1,6 @@
-import { auth, db } from "../firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
 import React, { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../firebase";
 
 const Profile = () => {
   const [open, setOpen] = useState(false);
@@ -30,12 +30,14 @@ const Profile = () => {
       {uid && (
         <img
           src={photoURL}
-          alt="User Image"
+          alt="User Avatar"
           onClick={() => setOpen(!open)}
+          referrerPolicy="no-referrer"
           style={{
             borderRadius: "100%",
             boxShadow: "0 0 5px -2px #000",
             marginLeft: "auto",
+            cursor: "pointer",
           }}
           width={40}
         />
