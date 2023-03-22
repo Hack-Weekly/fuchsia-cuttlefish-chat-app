@@ -44,7 +44,6 @@ const ChatBox = () => {
     <>
       <NavBar title={roomName} />
       <main className="chat-box">
-        <ChatHeader roomName={roomName} />
         <div className="messages-wrapper">
           {messages?.map((message) => (
             <Message key={message.id} message={message} />

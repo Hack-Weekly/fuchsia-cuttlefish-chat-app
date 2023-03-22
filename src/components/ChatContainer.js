@@ -30,6 +30,8 @@ const ChatContainer = () => {
   return (
     <main className="chat-rooms-container">
       <CreateChatRoom />
+      <h4 style={{ margin: "8px 0 16px 0" }}>or</h4>
+      <h2>Join an existing room</h2>
       <div style={{ paddingTop: 15 }}>
         {rooms?.map((room) => (
           <ChatRoom

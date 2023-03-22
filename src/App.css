@@ -87,14 +87,7 @@ input {
 }
 .chat-rooms-container {
   padding: 20px;
-}
-.chat-room-select {
-  border: 2px solid grey;
-  border-radius: 10px;
-  font-size: large;
-}
-.chat-room-select:hover {
-  background-color: rgb(250, 228, 250);
+  padding-top: 70px;
 }
 .chat-room-text,
 .chat-room-text:visited {
@@ -158,7 +151,7 @@ input {
   display: flex;
   flex-direction: column;
 }
-.chat-room-select a {
+.chat-room-select {
   padding: 16px 32px;
   margin: 8px 0;
   background-color: #fafafa;
@@ -167,12 +160,10 @@ input {
   text-decoration: none;
   color: #000;
   text-transform: capitalize;
-  width: 50vw;
 }
-.chat-room-select a:hover {
+.chat-room-select:hover {
   background-color: #fff;
   box-shadow: 0 0 16px -2px #7B0246;
-
 }
 .user-name {
   font-weight: bold;
@@ -190,8 +181,6 @@ input {
 .message-time.right {
   text-align: right;
 }
-
-/* send message */
 .send-message {
   position: fixed;
   bottom: 0px;
@@ -210,6 +199,7 @@ input {
   background-color: white;
   color: #04220e;
   font-size: 1rem;
+  cursor: text;
 }
 .send-message > input:placeholder {
   color: #ddd;
@@ -218,13 +208,43 @@ input {
   outline: none;
   border-bottom: 1px solid #ea0385;
 }
-.send-message > button {
-  width: 70px;
-  height: 40px;
+ button {
   padding: 5px 10px;
-  border-radius: 0 5px 5px 0;
+  border-radius: 8px;
   color: #fafafa;
   border: 1px solid #ea0385;
   background-color: #ea0385;
   font-weight: 600;
+  font-size: large;
+  transition: all 0.5s ease;
+}
+button:hover {
+  filter: brightness(0.8);
+}
+.send-message > button {
+  border-radius: 0 5px 5px 0;
+  width: 70px;
+  height: 40px;
+  font-size: medium;
+}
+.room-form {
+  display: flex;
+  flex-direction: column;
+  transition: all 0.5s ease;
+  width: 33%;
+  min-width: 300px;
+  gap: 10px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 16px -2px #7B0246;
+  overflow: hidden;
+  border-radius: 16px;
+  margin-top: 8px;
+}
+.room-form input {
+  font-size: large;
+  cursor: text;
+  padding: 10px;
+  border-radius: 8px;
+  border: 0;
 }

@@ -37,6 +37,7 @@ const Profile = () => {
             borderRadius: "100%",
             boxShadow: "0 0 5px -2px #000",
             marginLeft: "auto",
+            cursor: "pointer",
           }}
           width={40}
         />
