@@ -11,6 +11,7 @@ import { useParams } from "react-router-dom";
 import { db } from "../firebase";
 import ChatHeader from "./ChatHeader";
 import Message from "./Message";
+import NavBar from "./NavBar";
 import SendMessage from "./SendMessage";
 
 const messagesRef = collection(db, "messages");
@@ -33,22 +34,25 @@ const ChatBox = () => {
       QuerySnapshot.forEach((doc) => {
         messages.push({ ...doc.data(), id: doc.id });
       });
+      console.log(messages);
       setMessages(messages);
     });
     return () => unsubscribe;
   }, [roomName]);
 
   return (
-    <main className="chat-box">
-      <ChatHeader roomName={roomName} />
-      <div className="messages-wrapper">
-        {messages?.map((message) => (
-          <Message key={message.id} message={message} />
-        ))}
-      </div>
-      <span ref={scroll}></span>
-      <SendMessage scroll={scroll} room={roomName} />
-    </main>
+    <>
+      <NavBar title={roomName} />
+      <main className="chat-box">
+        <div className="messages-wrapper">
+          {messages?.map((message) => (
+            <Message key={message.id} message={message} />
+          ))}
+        </div>
+        <span ref={scroll}></span>
+        <SendMessage scroll={scroll} room={roomName} />
+      </main>
+    </>
   );
 };
 
