@@ -1,5 +1,10 @@
 import {
-  collection, limit, onSnapshot, orderBy, query, where
+  collection,
+  limit,
+  onSnapshot,
+  orderBy,
+  query,
+  where,
 } from "firebase/firestore";
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -31,7 +36,7 @@ const ChatBox = () => {
       setMessages(messages);
     });
     return () => unsubscribe;
-  }, []);
+  }, [roomName]);
 
   return (
     <main className="chat-box">
