@@ -9,7 +9,6 @@ import {
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../firebase";
-import ChatHeader from "./ChatHeader";
 import Message from "./Message";
 import NavBar from "./NavBar";
 import SendMessage from "./SendMessage";
@@ -38,7 +37,7 @@ const ChatBox = () => {
       setMessages(messages);
     });
     return () => unsubscribe;
-  }, []);
+  }, [roomName]);
 
   return (
     <>
