@@ -271,9 +271,9 @@ input {
   font-size: 0.9rem;
   color: #04220e;
 }
-/* .user-message {
-  word-break: break-all;
-} */
+.user-message {
+  overflow-wrap: anywhere;
+}
 .message-time {
   display: block;
   font-size: 0.8rem;
@@ -308,6 +308,9 @@ input {
   outline: none;
   border-bottom: 1px solid #ea0385;
 }
+#imgInput {
+  display: none;
+}
 button {
   padding: 5px 10px;
   border-radius: 8px;
@@ -318,11 +321,22 @@ button {
   font-size: large;
   transition: all 0.5s ease;
 }
+label[for='imgInput'] {
+  border-radius: 0;
+  margin-right: 2px;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 0 5px 5px 0;
+  color: #04220e;
+  padding: 0 12px;
+  border-left: 1px solid #04220e77;
+}
+label[for='imgInput']:hover,
 button:hover {
   filter: brightness(0.8);
 }
 .send-message > button {
-  border-radius: 0 5px 5px 0;
+  border-radius: 5px;
   width: 70px;
   height: 40px;
   font-size: medium;
