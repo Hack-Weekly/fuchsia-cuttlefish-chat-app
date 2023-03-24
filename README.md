@@ -80,6 +80,7 @@ note - `const use_emulator` variable\
 3. After the emulator has been initialized, run `firebase emulators:start` to start your emulator
 4. In your firebase.js file, change the use_emulator variable to `true` in order to connect your app to emulator
 
+
 ### CHAT ROOM FIRESTORE SETUP
 
 1. Go to `Firestore Database` in the firebase dashboard.
@@ -92,3 +93,24 @@ note - `const use_emulator` variable\
 ```
 
 3. Once you have the new collection you should be able to add new chat rooms from the main page, and once you send messages in those new chat rooms you should see a new `room` field in the messages collection. (older messages won't show up anywhere)
+4. 
+
+## FIREBASE STORAGE SETUP
+
+1. In the sidebar go to `Storage` and click `Get started`.
+2. Select `start in production mode`.
+3. Select a location for your default Cloud Storage bucket, click `Done`.
+4. Go to `Rules` and change the permission to allow file uploads, it should look something like this:
+
+```
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read, write, create;
+    }
+  }
+}
+```
+
+5. Now you can try uploading images in the chat and you should see them show up in a folder names `images`
