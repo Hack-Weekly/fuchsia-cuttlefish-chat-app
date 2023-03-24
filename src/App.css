@@ -76,38 +76,6 @@ input {
   margin-bottom: 20px;
 }
 
-/* splash screen */
-.splash-screen {
-  position: fixed;
-  z-index: 100;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ea0385;
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.loading-circle {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  border: 3px solid white;
-  border-top-color: transparent;
-  animation: rotate 1s linear infinite;
-}
-
 /* authentication */
 .authentication-window {
   position: fixed;
