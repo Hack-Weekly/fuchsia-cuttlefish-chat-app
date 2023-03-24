@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../firebase";
+import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../firebase';
+import IconUserCircle from '../img/IconUserCircle';
 
 const Profile = () => {
   const [open, setOpen] = useState(false);
@@ -17,37 +18,40 @@ const Profile = () => {
   return (
     <div
       style={{
-        display: "flex",
-        flexDirection: "column",
-        background: "#36454F",
+        display: 'flex',
+        flexDirection: 'column',
+        background: '#36454F',
         padding: 8,
         borderRadius: 4,
-        position: "fixed",
+        position: 'fixed',
         top: 0,
         right: 30,
       }}
     >
-      {uid && (
-        <img
-          src={photoURL}
-          alt="User Avatar"
-          onClick={() => setOpen(!open)}
-          referrerPolicy="no-referrer"
-          style={{
-            borderRadius: "100%",
-            boxShadow: "0 0 5px -2px #000",
-            marginLeft: "auto",
-            cursor: "pointer",
-          }}
-          width={40}
-        />
-      )}
+      {uid &&
+        (photoURL ? (
+          <img
+            src={photoURL}
+            alt='User Avatar'
+            onClick={() => setOpen(!open)}
+            referrerPolicy='no-referrer'
+            style={{
+              borderRadius: '100%',
+              boxShadow: '0 0 5px -2px #000',
+              marginLeft: 'auto',
+              cursor: 'pointer',
+            }}
+            width={40}
+          />
+        ) : (
+          <IconUserCircle alt='User Avatar' onClick={() => setOpen(!open)} width={40} />
+        ))}
       {open && (
         <>
           <div
             style={{
-              fontFamily: "sans-serif",
-              wordWrap: "break-word",
+              fontFamily: 'sans-serif',
+              wordWrap: 'break-word',
               marginTop: 10,
             }}
           >
@@ -55,8 +59,8 @@ const Profile = () => {
           </div>
           <div
             style={{
-              fontFamily: "sans-serif",
-              wordWrap: "break-word",
+              fontFamily: 'sans-serif',
+              wordWrap: 'break-word',
               marginTop: 10,
             }}
           >
@@ -64,8 +68,8 @@ const Profile = () => {
           </div>
           <button
             onClick={signOut}
-            className="sign-out"
-            type="button"
+            className='sign-out'
+            type='button'
             style={{
               marginTop: 10,
             }}
