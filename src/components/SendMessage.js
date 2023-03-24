@@ -2,6 +2,7 @@ import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 import React, { useEffect, useRef, useState } from 'react';
 import { auth, db } from '../firebase';
+import { MdAddPhotoAlternate as Photo } from 'react-icons/md';
 
 const SendMessage = ({ scroll, room }) => {
   const [message, setMessage] = useState('');
@@ -85,7 +86,10 @@ const SendMessage = ({ scroll, room }) => {
         value={message}
         onChange={e => setMessage(e.target.value)}
       />
-      <input type='file' ref={fileInput} />
+      <label htmlFor='imgInput'>
+        <Photo size={36} />
+      </label>
+      <input type='file' id='imgInput' ref={fileInput} />
       <button type='submit'>Send</button>
     </form>
   );

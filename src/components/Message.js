@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase';
+import ImageModal from './ImageModal';
 
 const Message = ({ message }) => {
   const [user] = useAuthState(auth);
+  const [imageOpen, setImageOpen] = useState(false);
   const timeStamp = message.createdAt?.toDate();
   const align = message.uid === user.uid ? 'right' : '';
 
@@ -32,8 +34,16 @@ const Message = ({ message }) => {
               </div>
             </div>
             <div>
-              <img src={message.imageURL} style={{ maxWidth: 400 }} alt='' />
+              <img
+                src={message.imageURL}
+                style={{ maxWidth: '50vw' }}
+                alt=''
+                onClick={() => {
+                  setImageOpen(true);
+                }}
+              />
             </div>
+            {imageOpen && <ImageModal imgLink={message.imageURL} setImageOpen={setImageOpen} />}
           </div>
         ) : (
           <>
