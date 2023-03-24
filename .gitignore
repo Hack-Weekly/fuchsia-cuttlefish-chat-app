@@ -23,7 +23,10 @@ yarn-debug.log*
 yarn-error.log*
 
 # src
-# firebase.js
+src/firebase.js
+.firebaserc
+firebase.json
+storage.rules
 
 # /
 ui-debug.log

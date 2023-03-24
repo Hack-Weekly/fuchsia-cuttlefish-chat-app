@@ -29,7 +29,6 @@ const Authentication = () => {
       if (displayName) {
         await signInAnonymously(auth);
         await updateProfile(auth.currentUser, { displayName });
-        console.log("signed in with: ", displayName);
       }
     } catch (e) {}
   };
