@@ -1,4 +1,4 @@
-import { collection, limit, onSnapshot, orderBy, query, where } from 'firebase/firestore';
+import { collection, onSnapshot, orderBy, query, where } from 'firebase/firestore';
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { db, auth } from '../firebase';
@@ -17,7 +17,7 @@ const ChatBox = () => {
   const scroll = useRef();
 
   useEffect(() => {
-    const q = query(messagesRef, where('room', '==', roomName), orderBy('createdAt'), limit(50));
+    const q = query(messagesRef, where('room', '==', roomName), orderBy('createdAt'));
 
     const unsubscribe = onSnapshot(q, QuerySnapshot => {
       let messages = [];
