@@ -39,7 +39,7 @@ const SendMessage = ({ scroll, room }) => {
       uid,
     });
 
-    scroll.current.scrollIntoView({ behavior: 'smooth' });
+    scroll.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const uploadImage = file => {
