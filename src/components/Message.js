@@ -1,7 +1,27 @@
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase';
+import IconUserCircle from '../img/IconUserCircle';
 import ImageModal from './ImageModal';
+
+const BaseMessage = ({ user, text, avatar }) => (
+  <>
+    {avatar ? (
+      <img
+        className='chat-bubble__left'
+        src={avatar}
+        alt='user avatar'
+        referrerPolicy='no-referrer'
+      />
+    ) : (
+      <IconUserCircle className='chat-bubble__left' alt='user avatar' />
+    )}
+    <div className='chat-bubble__right'>
+      <p className='user-name'>{user}</p>
+      <p className='user-message'>{text}</p>
+    </div>
+  </>
+);
 
 const Message = ({ message }) => {
   const [user] = useAuthState(auth);
@@ -22,16 +42,7 @@ const Message = ({ message }) => {
                 paddingBottom: 10,
               }}
             >
-              <img
-                className='chat-bubble__left'
-                src={message.avatar}
-                alt='user avatar'
-                referrerPolicy='no-referrer'
-              />
-              <div className='chat-bubble__right'>
-                <p className='user-name'>{message.name}</p>
-                <p className='user-message'>{message.text}</p>
-              </div>
+              <BaseMessage user={message.name} text={message.text} avatar={message.avatar} />
             </div>
             <div>
               <img
@@ -46,18 +57,7 @@ const Message = ({ message }) => {
             {imageOpen && <ImageModal imgLink={message.imageURL} setImageOpen={setImageOpen} />}
           </div>
         ) : (
-          <>
-            <img
-              className='chat-bubble__left'
-              src={message.avatar}
-              alt='user avatar'
-              referrerPolicy='no-referrer'
-            />
-            <div className='chat-bubble__right'>
-              <p className='user-name'>{message.name}</p>
-              <p className='user-message'>{message.text}</p>
-            </div>
-          </>
+          <BaseMessage user={message.name} text={message.text} avatar={message.avatar} />
         )}
       </div>
       <p
