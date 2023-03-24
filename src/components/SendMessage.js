@@ -1,8 +1,8 @@
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 import React, { useEffect, useRef, useState } from 'react';
-import { auth, db } from '../firebase';
 import { MdAddPhotoAlternate as Photo } from 'react-icons/md';
+import { auth, db } from '../firebase';
 
 const SendMessage = ({ scroll, room }) => {
   const [message, setMessage] = useState('');
@@ -43,8 +43,9 @@ const SendMessage = ({ scroll, room }) => {
   };
 
   const uploadImage = file => {
+    // TODO: filter based on list of approved file types
     const metadata = {
-      contentType: 'image/jpeg',
+      contentType: file.type,
     };
     const storage = getStorage();
     const storageRef = ref(storage, 'images/' + file.name);
