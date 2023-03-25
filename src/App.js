@@ -8,16 +8,19 @@ import React, { useState, useEffect } from 'react';
 import SplashScreen from './components/SplashScreen';
 
 function App() {
-  const [loading, setLoading] = useState(true);
+  const [appLoaded, setAppLoaded] = useState(sessionStorage.getItem('appLoaded'));
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 500);
+    setTimeout(() => {
+      sessionStorage.setItem('appLoaded', true);
+      setAppLoaded(sessionStorage.getItem('appLoaded'));
+    }, 500);
   }, []);
 
   const [user] = useAuthState(auth);
   return (
     <div className='App'>
-      {loading ? <SplashScreen /> : <></>}
+      {appLoaded ? <></> : <SplashScreen />}
       <NavBar />
       {!user ? <Welcome /> : <ChatContainer />}
     </div>
