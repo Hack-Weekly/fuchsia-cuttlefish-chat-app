@@ -1,30 +1,41 @@
-import { collection, onSnapshot, orderBy, query, where } from 'firebase/firestore';
+import chroma from 'chroma-js';
+import { collection, limit, onSnapshot, orderBy, query, where } from 'firebase/firestore';
 import React, { useEffect, useRef, useState } from 'react';
-import { useParams, Navigate } from 'react-router-dom';
-import { db, auth } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Navigate, useParams } from 'react-router-dom';
+import { auth, db } from '../firebase';
 import Message from './Message';
 import NavBar from './NavBar';
 import SendMessage from './SendMessage';
 
+const COLORS = chroma
+  .scale(['black', 'brown', 'red', 'green', 'blue', 'purple', 'grey'])
+  .colors(32);
 const messagesRef = collection(db, 'messages');
+
+const getAccent = () => COLORS[Math.floor(Math.random() * 32)];
 
 const ChatBox = () => {
   const [user] = useAuthState(auth);
+  const [accent, setAccent] = useState('');
   const { roomName } = useParams();
   const [messages, setMessages] = useState([]);
   const [isMounted, setIsMounted] = useState(false);
   const scroll = useRef();
 
   useEffect(() => {
-    const q = query(messagesRef, where('room', '==', roomName), orderBy('createdAt'));
+    const q = query(
+      messagesRef,
+      where('room', '==', roomName),
+      orderBy('createdAt', 'desc'),
+      limit(50)
+    );
 
     const unsubscribe = onSnapshot(q, QuerySnapshot => {
       let messages = [];
       QuerySnapshot.forEach(doc => {
-        messages.push({ ...doc.data(), id: doc.id });
+        messages.unshift({ ...doc.data(), id: doc.id });
       });
-      console.log(messages);
       setMessages(messages);
 
       if (isMounted) {
@@ -37,6 +48,17 @@ const ChatBox = () => {
     return () => unsubscribe;
   }, [roomName, isMounted]);
 
+  useEffect(() => {
+    if (user) {
+      const storedAccent = localStorage.getItem('accent');
+      if (!storedAccent) {
+        const chosenAccent = getAccent();
+        setAccent(chosenAccent);
+        localStorage.setItem('accent', chosenAccent);
+      } else setAccent(storedAccent);
+    }
+  }, [user, messages]);
+
   if (user) {
     return (
       <>
@@ -48,7 +70,7 @@ const ChatBox = () => {
             ))}
           </div>
           <span ref={scroll}></span>
-          <SendMessage scroll={scroll} room={roomName} />
+          <SendMessage scroll={scroll} room={roomName} accent={accent} />
         </main>
       </>
     );

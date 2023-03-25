@@ -4,7 +4,7 @@ import { auth } from '../firebase';
 import IconUserCircle from '../img/IconUserCircle';
 import ImageModal from './ImageModal';
 
-const BaseMessage = ({ user, text, avatar }) => (
+const BaseMessage = ({ user, text, avatar, accent }) => (
   <>
     {avatar ? (
       <img
@@ -17,7 +17,9 @@ const BaseMessage = ({ user, text, avatar }) => (
       <IconUserCircle className='chat-bubble__left' alt='user avatar' />
     )}
     <div className='chat-bubble__right'>
-      <p className='user-name'>{user}</p>
+      <p className='user-name' style={{ color: accent }}>
+        {user}
+      </p>
       <p className='user-message'>{text}</p>
     </div>
   </>
@@ -42,7 +44,12 @@ const Message = ({ message }) => {
                 paddingBottom: 10,
               }}
             >
-              <BaseMessage user={message.name} text={message.text} avatar={message.avatar} />
+              <BaseMessage
+                user={message.name}
+                text={message.text}
+                avatar={message.avatar}
+                accent={message.accent}
+              />
             </div>
             <div>
               <img
@@ -57,7 +64,12 @@ const Message = ({ message }) => {
             {imageOpen && <ImageModal imgLink={message.imageURL} setImageOpen={setImageOpen} />}
           </div>
         ) : (
-          <BaseMessage user={message.name} text={message.text} avatar={message.avatar} />
+          <BaseMessage
+            user={message.name}
+            text={message.text}
+            avatar={message.avatar}
+            accent={message.accent}
+          />
         )}
       </div>
       <p
