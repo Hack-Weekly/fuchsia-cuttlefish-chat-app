@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { MdAddPhotoAlternate as Photo } from 'react-icons/md';
 import { auth, db } from '../firebase';
 
-const SendMessage = ({ scroll, room }) => {
+const SendMessage = ({ scroll, room, accent }) => {
   const [message, setMessage] = useState('');
   const [imageURL, setImageUrl] = useState('');
   const [progress, setProgress] = useState(0);
@@ -36,6 +36,7 @@ const SendMessage = ({ scroll, room }) => {
       avatar: photoURL,
       createdAt: serverTimestamp(),
       imageURL: imageURL || null,
+      accent,
       room,
       uid,
     });

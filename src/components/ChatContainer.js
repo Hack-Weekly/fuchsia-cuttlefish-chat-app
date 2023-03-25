@@ -1,4 +1,4 @@
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
+import { collection, limit, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { db } from '../firebase';
 import ChatRoom from './ChatRoom';
@@ -9,7 +9,7 @@ const ChatContainer = () => {
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
-    const q = query(roomsRef, orderBy('createdAt'));
+    const q = query(roomsRef, orderBy('createdAt'), limit(50));
     const unsubscribe = onSnapshot(q, QuerySnapshot => {
       let rooms = [];
       QuerySnapshot.forEach(doc => {
