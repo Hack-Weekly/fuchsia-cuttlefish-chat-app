@@ -27,15 +27,19 @@ const ChatBox = () => {
       console.log(messages);
       setMessages(messages);
 
-      if (isMounted) {
-        scroll.current?.scrollIntoView({ behavior: 'instant' });
-      } else {
-        setIsMounted(true);
-      }
+      setIsMounted(true);
     });
 
     return () => unsubscribe;
-  }, [roomName, isMounted]);
+  }, [roomName]);
+
+  useEffect(() => {
+    if (isMounted) {
+      setTimeout(() => {
+        scroll.current?.scrollIntoView({ behavior: 'instant' });
+      }, 250);
+    }
+  }, [isMounted]);
 
   if (user) {
     return (

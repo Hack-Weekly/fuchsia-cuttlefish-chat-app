@@ -21,7 +21,6 @@ const ChatContainer = () => {
       QuerySnapshot.forEach((doc) => {
         rooms.push({ ...doc.data(), id: doc.id });
       });
-      console.log(rooms);
       setRooms(rooms);
     });
     return () => unsubscribe;
