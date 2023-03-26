@@ -158,9 +158,9 @@ input {
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  border: 1px solid grey;
+  border: 2px solid grey;
   border-radius: 16px;
-  height: 70%;
+  height: 65%;
   width: 70%;
   max-width: 350px;
   max-height: 500px;
@@ -195,6 +195,7 @@ input {
 .anon-form input {
   height: 2rem;
   padding: 4px;
+  border: 2px solid black;
 }
 
 .anon {

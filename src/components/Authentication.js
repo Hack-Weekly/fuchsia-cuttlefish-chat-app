@@ -1,5 +1,4 @@
 import {
-  FacebookAuthProvider,
   getAuth,
   GithubAuthProvider,
   GoogleAuthProvider,
@@ -54,13 +53,6 @@ const Authentication = () => {
     } catch (e) {}
   };
 
-  const facebookSignIn = async event => {
-    try {
-      const provider = new FacebookAuthProvider();
-      signInWithPopup(auth, provider);
-    } catch (e) {}
-  };
-
   return (
     <div>
       {!open ? (
@@ -97,9 +89,6 @@ const Authentication = () => {
               OR
               <span> - - - - - - - - - -</span>
             </div>
-            <button onClick={facebookSignIn} className='auth-button facebook'>
-              Continue with Facebook
-            </button>
             <button onClick={googleSignIn} className='auth-button google'>
               Continue with Google
             </button>

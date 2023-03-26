@@ -37,7 +37,6 @@ const ChatBox = () => {
         messages.unshift({ ...doc.data(), id: doc.id });
       });
       setMessages(messages);
-
       setIsMounted(true);
     });
 
