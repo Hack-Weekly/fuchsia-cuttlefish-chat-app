@@ -18,8 +18,14 @@ const Profile = () => {
     navigate('/');
   };
 
+  window.addEventListener(
+    'click',
+    e => open && !document.getElementById('profile-modal').contains(e.target) && setOpen(!open)
+  );
+
   return (
     <div
+      id='profile-modal'
       style={{
         display: 'flex',
         flexDirection: 'column',
