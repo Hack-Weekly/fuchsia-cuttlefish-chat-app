@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
 import IconUserCircle from '../img/IconUserCircle';
 
 const Profile = () => {
   const [open, setOpen] = useState(false);
   const [user] = useAuthState(auth);
+  let navigate = useNavigate();
 
   if (!user) return <></>;
 
@@ -13,10 +15,17 @@ const Profile = () => {
 
   const signOut = () => {
     auth.signOut();
+    navigate('/');
   };
+
+  window.addEventListener(
+    'click',
+    e => open && !document.getElementById('profile-modal').contains(e.target) && setOpen(!open)
+  );
 
   return (
     <div
+      id='profile-modal'
       style={{
         display: 'flex',
         flexDirection: 'column',

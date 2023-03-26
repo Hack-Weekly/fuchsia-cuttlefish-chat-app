@@ -29,7 +29,7 @@ const Message = ({ message }) => {
   const [user] = useAuthState(auth);
   const [imageOpen, setImageOpen] = useState(false);
   const timeStamp = message.createdAt?.toDate();
-  const align = message.uid === user.uid ? 'right' : '';
+  const align = message.uid === user?.uid ? 'right' : '';
 
   return (
     <div className='chat-bubble-wrapper'>

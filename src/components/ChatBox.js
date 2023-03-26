@@ -1,9 +1,10 @@
 import chroma from 'chroma-js';
 import { collection, limit, onSnapshot, orderBy, query, where } from 'firebase/firestore';
 import React, { useEffect, useRef, useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { Navigate, useParams } from 'react-router-dom';
-import { auth, db } from '../firebase';
+import { useNavigate, useParams } from 'react-router-dom';
+import { db } from '../firebase';
+import useAuth from '../hooks/useAuth';
+import Loader from './Loader';
 import Message from './Message';
 import NavBar from './NavBar';
 import SendMessage from './SendMessage';
@@ -16,7 +17,8 @@ const messagesRef = collection(db, 'messages');
 const getAccent = () => COLORS[Math.floor(Math.random() * 32)];
 
 const ChatBox = () => {
-  const [user] = useAuthState(auth);
+  let navigate = useNavigate();
+  const [isAuthenticating, setIsAuthenticating] = useState(true);
   const [accent, setAccent] = useState('');
   const { roomName } = useParams();
   const [messages, setMessages] = useState([]);
@@ -44,25 +46,31 @@ const ChatBox = () => {
   }, [roomName]);
 
   useEffect(() => {
-    if (isMounted) {
-      setTimeout(() => {
-        scroll.current?.scrollIntoView({ behavior: 'instant' });
-      }, 250);
-    }
-  }, [isMounted]);
-
-  useEffect(() => {
-    if (user) {
+    if (isMounted && !isAuthenticating) {
       const storedAccent = localStorage.getItem('accent');
       if (!storedAccent) {
         const chosenAccent = getAccent();
         setAccent(chosenAccent);
         localStorage.setItem('accent', chosenAccent);
       } else setAccent(storedAccent);
-    }
-  }, [user, messages]);
 
-  if (user) {
+      setTimeout(() => {
+        scroll.current?.scrollIntoView({ behavior: 'instant' });
+      }, 250);
+    }
+  }, [isAuthenticating, isMounted]);
+
+  useAuth().then(
+    () => {
+      setIsAuthenticating(false);
+    },
+    error => {
+      navigate('/');
+    }
+  );
+
+  if (isAuthenticating) return <Loader />;
+  else
     return (
       <>
         <NavBar title={roomName} />
@@ -77,9 +85,6 @@ const ChatBox = () => {
         </main>
       </>
     );
-  } else {
-    return <Navigate to='/' />;
-  }
 };
 
 export default ChatBox;
