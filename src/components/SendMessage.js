@@ -1,7 +1,8 @@
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
-import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { MdAddPhotoAlternate as Photo } from 'react-icons/md';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { MdOutlineCancel } from 'react-icons/md';
+import { TbPhotoCheck, TbPhotoPlus, TbPhotoUp } from 'react-icons/tb';
 import { auth, db } from '../firebase';
 
 const SendMessage = ({ scroll, room, accent }) => {
@@ -11,9 +12,10 @@ const SendMessage = ({ scroll, room, accent }) => {
   const messageInput = useRef(null);
   const fileInput = useRef(null);
 
-  const clearInput = () => {
-    setMessage('');
+  const clearInput = keepText => {
+    !keepText && setMessage('');
     setImageUrl('');
+    setProgress(0);
     fileInput.current.value = '';
   };
 
@@ -84,6 +86,16 @@ const SendMessage = ({ scroll, room, accent }) => {
     background: `linear-gradient(to top, #0f0 ${progress}%, #fff ${progress}%)`,
   };
 
+  const imgRemoveStyle = {
+    cursor: `pointer`,
+    backgroundColor: 'white',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '0 0.5em',
+    marginLeft: -36,
+  };
+
   useEffect(() => {
     const handleFileInputChange = () => {
       const files = fileInput.current?.files;
@@ -91,7 +103,7 @@ const SendMessage = ({ scroll, room, accent }) => {
         uploadImage(files[0]);
       }
     };
-  
+
     const inputRef = fileInput.current;
     inputRef.addEventListener('change', handleFileInputChange);
     return () => {
@@ -124,8 +136,21 @@ const SendMessage = ({ scroll, room, accent }) => {
         value={message}
         onChange={e => setMessage(e.target.value)}
       />
+      {progress === 100 && (
+        <div className='inputRemovePhoto' style={imgRemoveStyle} onClick={() => clearInput(true)}>
+          <MdOutlineCancel size={24} />
+        </div>
+      )}
       <label htmlFor='imgInput' style={imgInputStyle}>
-        <Photo size={36} />
+        {progress ? (
+          progress === 100 ? (
+            <TbPhotoCheck size={36} />
+          ) : (
+            <TbPhotoUp size={36} />
+          )
+        ) : (
+          <TbPhotoPlus size={36} />
+        )}
       </label>
       <input type='file' id='imgInput' ref={fileInput} />
       <button type='submit'>Send</button>

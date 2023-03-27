@@ -347,13 +347,18 @@ input {
   color: #04220e;
   font-size: 1rem;
   cursor: text;
+  border-bottom: 1px solid transparent;
 }
 .send-message > input:placeholder {
   color: #ddd;
 }
-.send-message > :is(input, button):focus {
+.send-message > :is(input, button):focus,
+.send-message > :is(input, button):focus + .inputRemovePhoto {
   outline: none;
   border-bottom: 1px solid #ea0385;
+}
+.inputRemovePhoto {
+  border-bottom: 1px solid transparent;
 }
 #imgInput {
   display: none;
@@ -379,6 +384,7 @@ label[for='imgInput'] {
   border-left: 1px solid #04220e77;
 }
 label[for='imgInput']:hover,
+.inputRemovePhoto:hover,
 button:hover {
   filter: brightness(0.8);
 }
