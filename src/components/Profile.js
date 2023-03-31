@@ -20,21 +20,21 @@ const Profile = () => {
 
   window.addEventListener(
     'click',
-    e => open && !document.getElementById('profile-modal').contains(e.target) && setOpen(!open)
+    e => open && !document.getElementById('profile')?.contains(e.target) && setOpen(!open)
   );
 
   return (
     <div
-      id='profile-modal'
+      id='profile'
       style={{
         display: 'flex',
         flexDirection: 'column',
-        background: '#36454F',
         padding: 8,
         borderRadius: 4,
         position: 'fixed',
         top: 0,
         right: 30,
+        borderWidth: open && '1px',
       }}
     >
       {uid &&

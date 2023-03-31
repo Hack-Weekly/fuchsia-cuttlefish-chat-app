@@ -1,3 +1,45 @@
+@media (prefers-color-scheme: light) {
+  :root {
+    --font-color: #000;
+    --bg-color: #fff;
+    --color-primary: #36454f;
+    --color-secondary: #e8e8e8;
+    --color-accent: #ea0385;
+    --font-color-secondary: #0a3a0a;
+    --font-color-chat: #2a0118;
+    --alt-font-color: #fafafa;
+    --shadow-color: #04220e;
+    --box-shadow-user: #0b662b;
+    --box-shadow-other: #620138;
+    --accent-shadow-color: #7b0246;
+    --transparent-shadow-color: rgba(0, 0, 0, 0.5);
+    --color-grey: #808080;
+    --color-grey-light: #ddd;
+    --color-anon: #04aa6d;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --font-color: #fff;
+    --bg-color: #000;
+    --color-primary: #000b1a;
+    --color-secondary: #e8e8e8;
+    --color-accent: #ea0385;
+    --font-color-secondary: #e4ffe4;
+    --font-color-chat: #f9c1e1;
+    --alt-font-color: #d7d7d7;
+    --shadow-color: #1f2421;
+    --box-shadow-user: #0b662b;
+    --box-shadow-other: #620138;
+    --accent-shadow-color: #7b0246;
+    --transparent-shadow-color: rgba(0, 0, 0, 0.5);
+    --color-grey: #9f9f9f;
+    --color-grey-light: #181818;
+    --color-anon: #04aa6d;
+  }
+}
+
 *,
 *:before,
 *:after {
@@ -8,15 +50,11 @@
 
 html,
 body {
-  max-width: 100vw;
   font-size: 16px;
   font-family: 'Lato', sans-serif;
-  background-color: #e8e8e8;
+  background-color: var(--color-secondary);
+  color: var(--font-color);
 }
-
-/* h2 {
-  font-family: 'Montserrat', sans-serif;
-} */
 
 button,
 input {
@@ -26,25 +64,24 @@ input {
 .App {
   position: absolute;
   width: 100vw;
-  height: 100vh;
-  background-color: #eee;
-  color: #0a0a0a;
+  height: 100%;
+  background-color: var(--bg-color);
 }
 
 /* navbar */
 .nav-bar {
   display: flex;
   align-items: center;
-  background-color: #36454f;
+  background-color: var(--color-primary);
   height: 60px;
-  box-shadow: 0 0 10px #04220e;
+  box-shadow: 0 0 10px var(--shadow-color);
   position: fixed;
   top: 0;
   width: 100%;
 }
 .nav-bar,
 .nav-bar a {
-  color: #fafafa;
+  color: var(--alt-font-color);
   text-decoration: none;
 }
 .sign-in {
@@ -58,11 +95,15 @@ input {
 .sign-out {
   padding: 5px 10px;
   border-radius: 5px;
-  color: #fafafa;
-  box-shadow: 0 0 5px -1px #2a0118;
-  background-color: #ea0385;
+  color: var(--alt-font-color);
+  box-shadow: 0 0 5px -1px var(--shadow-color);
+  background-color: var(--color-accent);
   font-weight: 600;
   border: 0;
+}
+#profile {
+  background-color: var(--color-primary);
+  border: 0px solid var(--accent-shadow-color);
 }
 
 /* splash screen */
@@ -76,7 +117,7 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ea0385;
+  background-color: var(--color-accent);
 }
 
 @keyframes wobble {
@@ -107,7 +148,7 @@ input {
   width: 250px;
   height: 250px;
   border-radius: 50%;
-  border: 3px solid white;
+  border: 3px solid var(--bg-color);
   border-top-color: transparent;
   animation: wobble 1s linear infinite;
 }
@@ -117,21 +158,21 @@ input {
   padding: 30px;
   text-align: center;
   margin-top: 40px;
-  color: #0a3a0a;
+  color: var(--font-color-secondary);
 }
 .welcome :is(h2, p, img) {
   margin-bottom: 20px;
 }
 
 /* authentication */
-.authentication-window {
+.auth-bg {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 100;
   height: 100vh;
   width: 100vw;
-  background-color: white;
+  background-color: var(--transparent-shadow-color);
 }
 
 .auth-logo {
@@ -141,15 +182,19 @@ input {
 }
 
 .auth-close {
+  color: var(--font-color);
+  background-color: var(--bg-color);
+  border: 0;
   position: fixed;
   font-size: 1.5rem;
-  top: 1rem;
+  top: 0.5rem;
   right: 1rem;
   cursor: pointer;
 }
 
-.auth {
-  border: 0.1rem solid black;
+.auth-window {
+  background-color: var(--bg-color);
+  border: 0.1rem solid var(--font-color);
   display: flex;
   flex-direction: column;
   gap: 1.3rem;
@@ -157,8 +202,8 @@ input {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
-  border: 2px solid grey;
+  background-color: var(--bg-color);
+  border: 2px solid var(--color-grey);
   border-radius: 16px;
   height: 65%;
   width: 70%;
@@ -195,31 +240,29 @@ input {
 .anon-form input {
   height: 2rem;
   padding: 4px;
-  border: 2px solid black;
+  border: 2px solid var(--font-color);
+  color: var(--font-color);
+  background-color: var(--bg-color);
 }
 
 .anon {
-  background-color: #04aa6d;
+  background-color: var(--color-anon);
 }
 
 .anon:disabled {
-  background-color: black;
-}
-
-.facebook {
-  background-color: #1877f2;
+  background-color: var(--color-grey-light);
 }
 
 .google {
-  background-color: white;
-  color: black;
-  border: 0.1rem solid grey;
+  background-color: var(--bg-color);
+  color: var(--font-color);
+  border: 0.1rem solid var(--color-grey);
 }
 
 .github {
-  background-color: white;
-  color: black;
-  border: 0.1rem solid grey;
+  background-color: var(--bg-color);
+  color: var(--font-color);
+  border: 0.1rem solid var(--color-grey);
 }
 
 /* chat component */
@@ -228,22 +271,23 @@ input {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #36454f;
-  color: #fafafa;
+  background-color: var(--color-primary);
+  color: var(--alt-font-color);
   height: 30px;
-  box-shadow: 0 0 10px #04220e;
+  box-shadow: 0 0 10px var(--shadow-color);
 }
 .chat-rooms-container {
   padding: 20px;
   padding-top: 70px;
+  overflow: visible;
 }
 .chat-room-text,
 .chat-room-text:visited {
   text-decoration: none;
-  color: black;
+  color: var(--font-color);
 }
 .chat-room-back:visited {
-  color: #fafafa;
+  color: var(--alt-font-color);
 }
 .chat-room-back {
   text-decoration: none;
@@ -257,10 +301,12 @@ input {
 }
 .chat-box {
   margin-top: 60px;
+  background-color: var(--bg-color);
 }
 .messages-wrapper {
   padding: 30px;
   margin-bottom: 60px;
+  /* background-color: var(--bg-color); */
 }
 .chat-bubble-wrapper {
   margin-bottom: 15px;
@@ -268,11 +314,11 @@ input {
 .chat-bubble {
   border-radius: 20px 20px 20px 0;
   padding: 15px;
-  background-color: #fff;
-  color: #2a0118;
+  background-color: var(--bg-color);
+  color: var(--font-color-chat);
   width: max-content;
   max-width: calc(100% - 50px);
-  box-shadow: -2px 2px 1px 1px #620138;
+  box-shadow: -2px 2px 1px 1px var(--box-shadow-other);
   display: flex;
   align-items: flex-start;
   margin-bottom: 10px;
@@ -280,8 +326,8 @@ input {
 .chat-bubble.right {
   margin-left: auto;
   border-radius: 20px 20px 0 20px;
-  background-color: #fff;
-  box-shadow: -2px 2px 1px 1px #0b662b;
+  background-color: var(--bg-color);
+  box-shadow: -2px 2px 1px 1px var(--box-shadow-user);
 }
 .chat-bubble__left {
   width: 35px;
@@ -302,16 +348,16 @@ input {
 .chat-room-select {
   padding: 16px 32px;
   margin: 8px 0;
-  background-color: #fafafa;
+  background-color: var(--color-grey-light);
   border-radius: 8px;
-  box-shadow: 0 0 8px -2px #000;
+  box-shadow: 0 0 8px -2px var(--font-color);
   text-decoration: none;
-  color: #000;
+  color: var(--font-color);
   text-transform: capitalize;
 }
 .chat-room-select:hover {
-  background-color: #fff;
-  box-shadow: 0 0 16px -2px #7b0246;
+  background-color: var(--bg-color);
+  box-shadow: 0 0 16px -2px var(--accent-shadow-color);
 }
 .user-name {
   font-weight: bold;
@@ -333,9 +379,9 @@ input {
   bottom: 0px;
   width: 100%;
   padding: 20px 30px;
-  background-color: #36454f;
+  background-color: var(--color-primary);
   display: flex;
-  box-shadow: 0 0 10px #04220e;
+  box-shadow: 0 0 10px var(--shadow-color);
 }
 .send-message > input {
   height: 40px;
@@ -343,22 +389,23 @@ input {
   border-radius: 5px 0 0 5px;
   border: none;
   flex-grow: 1;
-  background-color: white;
-  color: #04220e;
+  background-color: var(--bg-color);
+  color: var(--grey);
   font-size: 1rem;
   cursor: text;
   border-bottom: 1px solid transparent;
 }
 .send-message > input:placeholder {
-  color: #ddd;
+  color: var(--font-color);
 }
 .send-message > :is(input, button):focus,
 .send-message > :is(input, button):focus + .inputRemovePhoto {
   outline: none;
-  border-bottom: 1px solid #ea0385;
+  border-bottom: 1px solid var(--color-accent);
 }
 .inputRemovePhoto {
   border-bottom: 1px solid transparent;
+  background-color: var(--bg-color);
 }
 #imgInput {
   display: none;
@@ -366,9 +413,9 @@ input {
 button {
   padding: 5px 10px;
   border-radius: 8px;
-  color: #fafafa;
-  border: 1px solid #ea0385;
-  background-color: #ea0385;
+  color: var(--alt-font-color);
+  border: 1px solid var(--color-accent);
+  background-color: var(--color-accent);
   font-weight: 600;
   font-size: large;
   transition: all 0.5s ease;
@@ -377,11 +424,11 @@ label[for='imgInput'] {
   border-radius: 0;
   margin-right: 2px;
   cursor: pointer;
-  background-color: white;
+  background-color: var(--bg-color);
   border-radius: 0 5px 5px 0;
-  color: #04220e;
+  color: var(--font-color);
   padding: 0 12px;
-  border-left: 1px solid #04220e77;
+  border-left: 1px solid var(--color-primary);
 }
 label[for='imgInput']:hover,
 .inputRemovePhoto:hover,
@@ -402,13 +449,15 @@ button:hover {
   min-width: 300px;
   gap: 10px;
   padding: 10px;
-  background-color: #fff;
-  box-shadow: 0 0 16px -2px #7b0246;
+  background-color: var(--bg-color);
+  box-shadow: 0 0 16px -2px var(--accent-shadow-color);
   overflow: hidden;
   border-radius: 16px;
   margin-top: 8px;
 }
 .room-form input {
+  background-color: var(--bg-color);
+  color: var(--font-color);
   font-size: large;
   cursor: text;
   padding: 10px;
@@ -427,12 +476,13 @@ button:hover {
   width: 128px;
   height: 128px;
   border-radius: 50%;
-  border: 3px solid black;
+  border: 3px solid var(--font-color);
   border-top-color: transparent;
   animation: spin 0.5s linear infinite;
 }
 
 .loader {
+  background-color: var(--bg-color);
   position: fixed;
   z-index: 100;
   height: 100%;

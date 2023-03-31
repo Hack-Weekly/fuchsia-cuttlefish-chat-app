@@ -6,22 +6,24 @@ import {
   signInWithPopup,
   updateProfile,
 } from 'firebase/auth';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const Authentication = () => {
   const [open, setOpen] = useState(false);
   const [displayName, setDisplayName] = useState('');
+  const background = useRef(null);
 
   const auth = getAuth();
 
-  const closeWindow = event => {
-    event.preventDefault();
-    setOpen(false);
+  const toggleModal = () => {
+    setOpen(!open);
   };
-  const openWindow = event => {
-    event.preventDefault();
-    setOpen(true);
-  };
+
+  // const toggleModal = e => {
+  //   console.log('toggle', e);
+  //   e && e.preventDefault();
+  //   setOpen(!open);
+  // };
 
   const anonymousSignIn = async event => {
     try {
@@ -53,24 +55,28 @@ const Authentication = () => {
     } catch (e) {}
   };
 
+  useEffect(() => {
+    const escKeyPressed = e => {
+      if (e.key === 'Escape' || e.key === 'Esc' || e.code === 27) toggleModal();
+    };
+    window.addEventListener('keydown', escKeyPressed);
+    return () => window.removeEventListener('keydown', escKeyPressed);
+  });
+
+  const backgroundClick = e => e.target === background.current && toggleModal();
+
   return (
     <div>
-      {!open ? (
-        <button onClick={openWindow}>Sign in</button>
-      ) : (
-        <div className='authentication-window'>
-          <img
-            className='auth-logo'
-            src='/logo192.png'
-            alt='Cuttlefish Club logo'
-            width={50}
-            height={50}
-          />
-          <p className='auth-close' onClick={closeWindow}>
-            X
-          </p>
-          <div className='auth'>
+      <button onClick={toggleModal} tabIndex={0}>
+        Sign in
+      </button>
+      {open && (
+        <div className='auth-bg' onClick={backgroundClick} ref={background}>
+          <div className='auth-window' id='auth-modal'>
             <h1 className='log-in'>Log in</h1>
+            <button className='auth-close' onClick={toggleModal} tabIndex={0}>
+              ✕
+            </button>
             <div className='anon-form'>
               <label>Display Name</label>
               <input

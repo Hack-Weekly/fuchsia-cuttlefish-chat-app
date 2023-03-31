@@ -12,6 +12,7 @@ import SendMessage from './SendMessage';
 const COLORS = chroma
   .scale(['black', 'brown', 'red', 'green', 'blue', 'purple', 'grey'])
   .colors(32);
+
 const messagesRef = collection(db, 'messages');
 
 const getAccent = () => COLORS[Math.floor(Math.random() * 32)];

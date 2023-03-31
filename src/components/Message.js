@@ -1,29 +1,34 @@
+import chroma from 'chroma-js';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase';
 import IconUserCircle from '../img/IconUserCircle';
 import ImageModal from './ImageModal';
 
-const BaseMessage = ({ user, text, avatar, accent }) => (
-  <>
-    {avatar ? (
-      <img
-        className='chat-bubble__left'
-        src={avatar}
-        alt='user avatar'
-        referrerPolicy='no-referrer'
-      />
-    ) : (
-      <IconUserCircle className='chat-bubble__left' alt='user avatar' />
-    )}
-    <div className='chat-bubble__right'>
-      <p className='user-name' style={{ color: accent }}>
-        {user}
-      </p>
-      <p className='user-message'>{text}</p>
-    </div>
-  </>
-);
+const BaseMessage = ({ user, text, avatar, accent }) => {
+  window.darkMode && accent && (accent = chroma(accent).brighten(2).hex());
+
+  return (
+    <>
+      {avatar ? (
+        <img
+          className='chat-bubble__left'
+          src={avatar}
+          alt='user avatar'
+          referrerPolicy='no-referrer'
+        />
+      ) : (
+        <IconUserCircle className='chat-bubble__left' alt='user avatar' />
+      )}
+      <div className='chat-bubble__right'>
+        <p className='user-name' style={{ color: accent }}>
+          {user}
+        </p>
+        <p className='user-message'>{text}</p>
+      </div>
+    </>
+  );
+};
 
 const Message = ({ message }) => {
   const [user] = useAuthState(auth);

@@ -12,6 +12,8 @@ const SendMessage = ({ scroll, room, accent }) => {
   const messageInput = useRef(null);
   const fileInput = useRef(null);
 
+  const BG_COLOR = window.darkMode ? '#000' : '#fff';
+
   const clearInput = keepText => {
     !keepText && setMessage('');
     setImageUrl('');
@@ -74,21 +76,22 @@ const SendMessage = ({ scroll, room, accent }) => {
     [setProgress, setImageUrl]
   );
 
+  const loadingBackground = {
+    background: `linear-gradient(to top, #0f0 ${progress}%, ${BG_COLOR} ${progress}%)`,
+    color: progress === 100 && 'black',
+  };
+
   const imgInputStyle = {
     marginRight: `2px`,
     cursor: `pointer`,
-    backgroundColor: `white`,
     borderRadius: `0 5px 5px 0`,
-    color: `#04220e`,
     padding: `0 12px`,
-    borderLeft: `1px solid #04220e77`,
     transition: `background-color 0.5s ease`,
-    background: `linear-gradient(to top, #0f0 ${progress}%, #fff ${progress}%)`,
+    ...(progress ? loadingBackground : {}),
   };
 
   const imgRemoveStyle = {
     cursor: `pointer`,
-    backgroundColor: 'white',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
